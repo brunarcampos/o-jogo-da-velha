@@ -34,10 +34,10 @@ int main() {
 
     //estruturo do jogo da velha 
     printf("             |             |             \n");
-    printf("    * * * *      |             |             \n");
-    printf("   *      *    |             |             \n");
-    printf("  *      *     |             |             \n");
-    printf("   * * * *       |             |             \n");
+    printf("             |             |             \n");
+    printf("             |             |             \n");
+    printf("             |             |             \n");
+    printf("             |             |             \n");
     printf("_____________|_____________|_____________\n");
     printf("             |             |             \n");
     printf("             |             |             \n");
