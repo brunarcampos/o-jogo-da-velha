@@ -234,13 +234,13 @@ int main()
     setlocale(LC_ALL, "Portuguese");
 
     char opcao_menu = '9';
-    char escolha = '8';
     char nome_x[50];
     char nome_o[50];
 
     while (opcao_menu != '6')
     {
         tela_inicial();
+        char escolha = '8';
         printf("Selecione o número para entrar na tela:  \n");
         scanf("%c", &opcao_menu);
 
@@ -280,6 +280,10 @@ int main()
             break;
         case '3':
             estrutura_jogo();
+            // primeiro jogo 
+            printf("Escolha a posição que será jogada: \n");
+            scanf("");
+
             break;
         case '4':
             estrutura_jogo();
@@ -294,7 +298,7 @@ int main()
             printf("Opção inválida.\n");
         }
 
-        // primeiro jogo
+    
     }
     return 0;
 }
