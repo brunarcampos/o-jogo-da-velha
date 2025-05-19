@@ -3,6 +3,15 @@
 #include <string.h>
 #include <stdlib.h>
 
+char tabuleiro[3][3] = {
+    {' ',' ',' '},
+    {' ',' ',' '},
+    {' ',' ',' '}
+};
+char nome_x[50] = "";
+char nome_o[50] = "";
+ 
+
 void tela_inicial()
 {
     // criar tela inicial do jogo
@@ -15,13 +24,13 @@ void tela_inicial()
     printf("|                                                   |\n");
     printf("|               1- CADASTRE JOGADORES               |\n");
     printf("|                                                   |\n");
-    printf("|               2- HISTÓRICO HANKING                |\n");
+    printf("|               2- HISTÓRICO RANKING                |\n");
     printf("|                                                   |\n");
     printf("|               3- JOGAR EM DUPLA                   |\n");
     printf("|                                                   |\n");
-    printf("|               4- JOGAR COM O COMPUTADOR (inátiva) |\n");
+    printf("|               4- JOGAR COM O COMPUTADOR           |\n");
     printf("|                                                   |\n");
-    printf("|               5- JOGAR COM A VELHA (inátiva)      |\n");
+    printf("|               5- JOGAR COM A VELHA                |\n");
     printf("|                                                   |\n");
     printf("|               6- SAIR                             |\n");
     printf("|                                                   |\n");
@@ -68,7 +77,7 @@ void tela_cadastro_x()
     printf("|             DIGITE O SEU PRIMEIRO NOME:           |\n");
     printf("|                                                   |\n");
     printf("|                                                   |\n");
-    printf("|                     %c                            |\n");
+    printf("|                                                   |\n");
     printf("|                                                   |\n");
     printf("|                                                   |\n");
     printf("|                                                   |\n");
@@ -93,7 +102,7 @@ void tela_cadastro_o()
     printf("|             DIGITE O SEU PRIMEIRO NOME:           |\n");
     printf("|                                                   |\n");
     printf("|                                                   |\n");
-    printf("|                       %c                          |\n");
+    printf("|                                                   |\n");
     printf("|                                                   |\n");
     printf("|                                                   |\n");
     printf("|                                                   |\n");
@@ -228,14 +237,29 @@ void tela_empate()
     printf("+---------------------------------------------------+\n");
 }
 
+void velhinha()
+{
+    system("cls");
+    printf("££££££££££££\n");
+    printf("££££££££££££\n");
+    printf("£ ¬   .  ¬ £\n");
+    printf("     __     \n");
+}
+
+void iniciar_tabuleiro(){
+    for(int i = 0; i < 3; i++){
+        for(int j = 0; j < 3; j++){
+            tabuleiro[i][j] = ' ';
+        }
+    }
+}
+
 int main()
 {
     // permiti colocar acentos
     setlocale(LC_ALL, "Portuguese");
 
     char opcao_menu = '9';
-    char nome_x[50];
-    char nome_o[50];
 
     while (opcao_menu != '6')
     {
@@ -272,7 +296,6 @@ int main()
                 default:
                     printf("Opção inválida.\n");
                 }
-
             }
             break;
         case '2':
@@ -280,9 +303,15 @@ int main()
             break;
         case '3':
             estrutura_jogo();
-            // primeiro jogo 
-            printf("Escolha a posição que será jogada: \n");
-            scanf("");
+            // primeiro jogo
+            
+            int linha, coluna;
+            char entrada[3];
+            printf("Escolha a posição que será jogada (Ex: A1): \n");
+            scanf("%s, entrada");
+
+            coluna = entrada[0] - 'A';
+            linha = entrada[1] - '1';
 
             break;
         case '4':
@@ -297,8 +326,6 @@ int main()
         default:
             printf("Opção inválida.\n");
         }
-
-    
     }
     return 0;
 }
