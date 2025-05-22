@@ -4,13 +4,15 @@
 #include <stdlib.h>
 
 char tabuleiro[3][3] = {
-    {' ',' ',' '},
-    {' ',' ',' '},
-    {' ',' ',' '}
-};
+    {' ', ' ', ' '},
+    {' ', ' ', ' '},
+    {' ', ' ', ' '}};
 char nome_x[50] = "";
 char nome_o[50] = "";
- 
+int linha, coluna;
+int posicao;
+
+void init(){}
 
 void tela_inicial()
 {
@@ -137,7 +139,7 @@ void historico_ranking()
     printf("+---------------------------------------------------+\n");
 }
 
-void estrutura_jogo()
+void estrutura_jogo(char *nome_o, char *nome_x, char A1, char A2, char A3, char B1, char B2, char B3, char C1, char C2, char C3)
 {
     // base da estrutura do jogo
     system("cls");
@@ -145,19 +147,19 @@ void estrutura_jogo()
     printf("|                                                   |\n");
     printf("|                  JOGO DA VELHA!!                  |\n");
     printf("|                                                   |\n");
-    printf("|  JOGADOR O (%c,nome_o):                           |\n");
-    printf("|  JOGADOR X (%c,nome_x):                           |\n");
-    printf("|                A         B        C               |\n");
+    printf("|  JOGADOR (O) %s :                               |\n", nome_o);
+    printf("|  JOGADOR (X) %s :                              |\n", nome_x);
+    printf("|                1         2        3               |\n");
     printf("|                     |         |                   |\n");
-    printf("|          1          |         |          1        |\n");
+    printf("|          A      %c  |    %c   |   %c      A       |\n", A1, A2, A3);
     printf("|               ______|_________|_______            |\n");
     printf("|                     |         |                   |\n");
-    printf("|          2          |         |          2        |\n");
+    printf("|          B      %c  |    %c   |  %c      B        |\n", B1, B2, B3);
     printf("|               ______|_________|_______            |\n");
     printf("|                     |         |                   |\n");
-    printf("|          3          |         |          3        |\n");
+    printf("|          C      %c  |   %c    |   %c      C       |\n", C1, C2, C3);
     printf("|                     |         |                   |\n");
-    printf("|                A         B         C              |\n");
+    printf("|                1         2         3              |\n");
     printf("|                                                   |\n");
     printf("+---------------------------------------------------+\n");
 }
@@ -246,9 +248,13 @@ void velhinha()
     printf("     __     \n");
 }
 
-void iniciar_tabuleiro(){
-    for(int i = 0; i < 3; i++){
-        for(int j = 0; j < 3; j++){
+void iniciar_tabuleiro()
+{
+    // comando para iniciar o tabuleiro
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
             tabuleiro[i][j] = ' ';
         }
     }
@@ -277,17 +283,17 @@ int main()
             {
                 tela_cadastro();
                 printf("Escolha em qual você quer se cadastrar:   \n");
-                scanf("%c", &escolha);
+                scanf(" %c", &escolha);
                 switch (escolha)
                 {
                 case '1':
                     printf("Digite o seu primeiro nome: \n");
-                    scanf("%s", nome_x);
+                    scanf("%s", &nome_x);
                     printf("\nNome cadastrado com sucesso!!!\n");
                     break;
                 case '2':
                     printf("Digite o seu primeiro nome: \n");
-                    scanf("%s", nome_o);
+                    scanf("%s", &nome_o);
                     printf("\nNome cadastrado com sucesso!!!\n");
                     break;
                 case '0':
@@ -299,26 +305,103 @@ int main()
             }
             break;
         case '2':
-            historico_ranking();
+            // mostrar o ranking com o histórico dos outros jogadores
+            while (escolha != '0')
+            {
+                historico_ranking();
+                printf("Para retornar a tela inicial é só digitar 0: ");
+                scanf(" %c", &escolha);
+            }
             break;
         case '3':
-            estrutura_jogo();
-            // primeiro jogo
-            
-            int linha, coluna;
-            char entrada[3];
-            printf("Escolha a posição que será jogada (Ex: A1): \n");
-            scanf("%s, entrada");
+            // primeiro jogo em dubla
+            init();
+            iniciar_tabuleiro();
+            char A1 = ' ';
+            char A2 = ' ';
+            char A3 = ' ';
+            char B1 = ' ';
+            char B2 = ' ';
+            char B3 = ' ';
+            char C1 = ' ';
+            char C2 = ' ';
+            char C3 = ' ';
 
-            coluna = entrada[0] - 'A';
-            linha = entrada[1] - '1';
+            // jogador inicial
+            char jogadorDaVez = 'X';
+
+            while (escolha != '0')
+            {
+                estrutura_jogo(nome_o, nome_x, A1, A2, A3, B1, B2, B3, C1, C2, C3);
+                printf("Escolha a posição que será jogada (Ex: A1): \n");
+                char entrada[2];
+                scanf("%2s", &entrada);
+
+                char linha = entrada[0];
+                char coluna = entrada[1];
+                if (entrada == "A1")
+                {
+                    A1 = jogadorDaVez;
+                }
+                else if (entrada == "A2")
+                {
+                    A2 = jogadorDaVez;
+                }
+                else if (entrada == "A3")
+                {
+                    A3 = jogadorDaVez;
+                }
+                else if (entrada == "B1")
+                {
+                    B1 = jogadorDaVez;
+                }
+                else if (entrada == "B2")
+                {
+                    B2 = jogadorDaVez;
+                }
+                else if (entrada == "B3")
+                {
+                    B3 = jogadorDaVez;
+                }
+                else if (entrada == "C1")
+                {
+                    C1 = jogadorDaVez;
+                }
+                else if (entrada == "C2")
+                {
+                    C2 = jogadorDaVez;
+                }
+                else if (entrada == "C3")
+                {
+                    C3 = jogadorDaVez;
+                }
+                else
+                {
+                    printf("Opção inválida ou ocupada. Tente novamente:\n");
+                }
+
+                if (jogadorDaVez == 'X')
+                {
+                    jogadorDaVez = 'O';
+                }
+                else
+                {
+                    jogadorDaVez = 'X';
+                }
+            }
 
             break;
         case '4':
-            estrutura_jogo();
+            // segundo jogo, jogar com a maquina
+            while (escolha != '0')
+            {
+            }
             break;
         case '5':
-            estrutura_jogo();
+            // terceiro jogo especial
+            while (escolha != '0')
+            {
+            }
             break;
         case '6':
             opcao_menu = '6';
