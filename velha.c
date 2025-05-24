@@ -7,12 +7,12 @@ char tabuleiro[3][3] = {
     {' ', ' ', ' '},
     {' ', ' ', ' '},
     {' ', ' ', ' '}};
-char nome_x[50] = "";
-char nome_o[50] = "";
+char nome_x[50] = "Bruna";
+char nome_o[50] = "Luiz";
 int linha, coluna;
 int posicao;
 
-void init(){}
+void init() {}
 
 void tela_inicial()
 {
@@ -139,28 +139,28 @@ void historico_ranking()
     printf("+---------------------------------------------------+\n");
 }
 
-void estrutura_jogo(char *nome_o, char *nome_x, char A1, char A2, char A3, char B1, char B2, char B3, char C1, char C2, char C3)
+void estrutura_jogo(char *nome_o, char *nome_x, char *A1, char *A2, char *A3, char *B1, char *B2, char *B3, char *C1, char *C2, char *C3)
 {
     // base da estrutura do jogo
     system("cls");
     printf("+---------------------------------------------------+\n");
-    printf("|                                                   |\n");
-    printf("|                  JOGO DA VELHA!!                  |\n");
-    printf("|                                                   |\n");
-    printf("|  JOGADOR (O) %s :                               |\n", nome_o);
-    printf("|  JOGADOR (X) %s :                              |\n", nome_x);
-    printf("|                1         2        3               |\n");
-    printf("|                     |         |                   |\n");
-    printf("|          A      %c  |    %c   |   %c      A       |\n", A1, A2, A3);
-    printf("|               ______|_________|_______            |\n");
-    printf("|                     |         |                   |\n");
-    printf("|          B      %c  |    %c   |  %c      B        |\n", B1, B2, B3);
-    printf("|               ______|_________|_______            |\n");
-    printf("|                     |         |                   |\n");
-    printf("|          C      %c  |   %c    |   %c      C       |\n", C1, C2, C3);
-    printf("|                     |         |                   |\n");
-    printf("|                1         2         3              |\n");
-    printf("|                                                   |\n");
+    printf("|                                                   \n");
+    printf("|                  JOGO DA VELHA!!                  \n");
+    printf("|                                                   \n");
+    printf("|  JOGADOR (O) %s :                                 \n", nome_o);
+    printf("|  JOGADOR (X) %s :                                 \n", nome_x);
+    printf("|                1         2        3               \n");
+    printf("|                     |         |                   \n");
+    printf("|          A      %c  |    %c   |   %c      A      \n", A1, A2, A3);
+    printf("|               ______|_________|_______            \n");
+    printf("|                     |         |                   \n");
+    printf("|          B      %c  |    %c   |  %c      B       \n", B1, B2, B3);
+    printf("|               ______|_________|_______            \n");
+    printf("|                     |         |                   \n");
+    printf("|          C      %c  |   %c    |   %c      C      \n", C1, C2, C3);
+    printf("|                     |         |                   \n");
+    printf("|                1         2         3              \n");
+    printf("|                                                   \n");
     printf("+---------------------------------------------------+\n");
 }
 
@@ -316,7 +316,6 @@ int main()
         case '3':
             // primeiro jogo em dubla
             init();
-            iniciar_tabuleiro();
             char A1 = ' ';
             char A2 = ' ';
             char A3 = ' ';
@@ -337,41 +336,41 @@ int main()
                 char entrada[2];
                 scanf("%2s", &entrada);
 
-                char linha = entrada[0];
-                char coluna = entrada[1];
-                if (entrada == "A1")
+                printf("Valor entrada: %s", entrada);
+
+                if (entrada[0] == 'A' && entrada[1] == '1')
                 {
                     A1 = jogadorDaVez;
                 }
-                else if (entrada == "A2")
+                else if (entrada[0] == 'A' && entrada[1] == '2')
                 {
                     A2 = jogadorDaVez;
                 }
-                else if (entrada == "A3")
+                else if (entrada[0] == 'A' && entrada[1] == '3')
                 {
                     A3 = jogadorDaVez;
                 }
-                else if (entrada == "B1")
+                else if (entrada[0] == 'B' && entrada[1] == '1')
                 {
                     B1 = jogadorDaVez;
                 }
-                else if (entrada == "B2")
+                else if (entrada[0] == 'B' && entrada[1] == '2')
                 {
                     B2 = jogadorDaVez;
                 }
-                else if (entrada == "B3")
+                else if (entrada[0] == 'B' && entrada[1] == '3')
                 {
                     B3 = jogadorDaVez;
                 }
-                else if (entrada == "C1")
+                else if (entrada[0] == 'C' && entrada[1] == '1')
                 {
                     C1 = jogadorDaVez;
                 }
-                else if (entrada == "C2")
+                else if (entrada[0] == 'C' && entrada[1] == '2')
                 {
                     C2 = jogadorDaVez;
                 }
-                else if (entrada == "C3")
+                else if (entrada[0] == 'C' && entrada[1] == '3')
                 {
                     C3 = jogadorDaVez;
                 }
@@ -379,6 +378,8 @@ int main()
                 {
                     printf("Opção inválida ou ocupada. Tente novamente:\n");
                 }
+
+                printf("Passou aqui");
 
                 if (jogadorDaVez == 'X')
                 {
