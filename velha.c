@@ -7,8 +7,8 @@ char tabuleiro[3][3] = {
     {' ', ' ', ' '},
     {' ', ' ', ' '},
     {' ', ' ', ' '}};
-char nome_x[50] = "Bruna";
-char nome_o[50] = "Luiz";
+char nome_x[50] = " ";
+char nome_o[50] = " ";
 int linha, coluna;
 int posicao;
 
@@ -125,10 +125,10 @@ void historico_ranking()
     printf("|                                                   |\n");
     printf("|                HSTORICO DE RANKING                |\n");
     printf("|                                                   |\n");
-    printf("|        VITÓRIAS       EMPATES         DERROTAS    |\n");
+    printf("|  JOGADORES     VITÓRIAS   EMPATES     DERROTAS    |\n");
     printf("|                                                   |\n");
-    printf("|                                                   |\n");
-    printf("|                                                   |\n");
+    printf("|  luiz (x)         12        5          3          |\n");
+    printf("|  bruna (o)    3            5                3     |\n");
     printf("|                                                   |\n");
     printf("|                                                   |\n");
     printf("|                                                   |\n");
@@ -139,7 +139,7 @@ void historico_ranking()
     printf("+---------------------------------------------------+\n");
 }
 
-void estrutura_jogo(char *nome_o, char *nome_x, char *A1, char *A2, char *A3, char *B1, char *B2, char *B3, char *C1, char *C2, char *C3)
+void estrutura_jogo(char *nome_o, char *nome_x, char *A1, char *A2, char *A3, char *B1, char *B2, char *B3, char *C1, char *C2, char C3)
 {
     // base da estrutura do jogo
     system("cls");
@@ -147,24 +147,24 @@ void estrutura_jogo(char *nome_o, char *nome_x, char *A1, char *A2, char *A3, ch
     printf("|                                                   \n");
     printf("|                  JOGO DA VELHA!!                  \n");
     printf("|                                                   \n");
-    printf("|  JOGADOR (O) %s :                                 \n", nome_o);
-    printf("|  JOGADOR (X) %s :                                 \n", nome_x);
+    printf("|  JOGADOR (O) %s                                   \n", nome_o);
+    printf("|  JOGADOR (X) %s                                   \n", nome_x);
     printf("|                1         2        3               \n");
     printf("|                     |         |                   \n");
     printf("|          A      %c  |    %c   |   %c      A      \n", A1, A2, A3);
     printf("|               ______|_________|_______            \n");
     printf("|                     |         |                   \n");
-    printf("|          B      %c  |    %c   |  %c      B       \n", B1, B2, B3);
+    printf("|          B      %c  |    %c   |    %c      B       \n", B1, B2, B3);
     printf("|               ______|_________|_______            \n");
     printf("|                     |         |                   \n");
-    printf("|          C      %c  |   %c    |   %c      C      \n", C1, C2, C3);
+    printf("|          C      %c  |    %c   |    %c      C      \n", C1, C2, C3);
     printf("|                     |         |                   \n");
     printf("|                1         2         3              \n");
     printf("|                                                   \n");
     printf("+---------------------------------------------------+\n");
 }
 
-void tela_vencedor()
+void tela_vencedor(char vencedor)
 {
     // criar tela do vencedor
     system("cls");
@@ -172,14 +172,14 @@ void tela_vencedor()
     printf("|                                                   |\n");
     printf("|                  JOGO DA VELHA!!                  |\n");
     printf("|                                                   |\n");
-    printf("|             UHUL VOCÊ VENCEU, PARABÉNS!!          |\n");
+    printf("|         UHUL VOCÊ VENCEU, PARABÉNS %c!!           |\n",vencedor);
     printf("|                                                   |\n");
     printf("|                  ______________                   |\n");
     printf("|                 '._=_=_=_=_=_=.'                  |\n");
-    printf("|                 .-\\:        /-.                  |\n");
+    printf("|                 .-\\:        /-.                   |\n");
     printf("|                | (|:.        |) |                 |\n");
     printf("|                 '-|:.        |-'                  |\n");
-    printf("|                  \\::.        /                   |\n");
+    printf("|                  \\::.        /                    |\n");
     printf("|                   '::.      .'                    |\n");
     printf("|                      )     (                      |\n");
     printf("|                       '   '                       |\n");
@@ -260,7 +260,81 @@ void iniciar_tabuleiro()
     }
 }
 
+char verificar_ganhador(char A1, char A2, char A3, char B1, char B2, char B3, char C1, char C2, char C3)
+{
+    // Criar uma função para verificar se ganhou com X
+    if (A1 == 'X' && A2 == 'X' && A3 == 'X')
+    {
+        return 'X'; // com esse ganha na primeira linha
+    }
+    else if (B1 == 'X' && B2 == 'X' && B3 == 'X')
+    {
+        return 'X'; // com esse ganha na segunda linha
+    }
+    else if (C1 == 'X' && C2 == 'X' && C3 == 'X')
+    {
+        return 'X'; // com esse ganha na terceira linha
+    }
+    else if (A1 == 'X' && B1 == 'X' && C1 == 'X')
+    {
+        return 'X'; // com esse ganha na primeira coluna
+    }
+    else if (A2 == 'X' && B2 == 'X' && C2 == 'X')
+    {
+        return 'X'; // com esse ganha na segunda coluna
+    }
+    else if (A3 == 'X' && B3 == 'X' && C3 == 'X')
+    {
+        return 'X'; // com esse ganha na terceira coluna
+    }
+    else if (A1 == 'X' && B2 == 'X' && C3 == 'X')
+    {
+        return 'X'; // com esse ganha na primeira diagonal
+    }
+    else if (A3 == 'X' && B2 == 'X' && C1 == 'X')
+    {
+        return 'X';
+    }
+
+    // Criar uma função para verificar se ganhou com O
+    if (A1 == 'O' && A2 == 'O' && A3 == 'O')
+    {
+        return 'O'; // com esse ganha na primeira linha
+    }
+    else if (B1 == 'O' && B2 == 'O' && B3 == 'O')
+    {
+        return 'O'; // com esse ganha na segunda linha
+    }
+    else if (C1 == 'O' && C2 == 'O' && C3 == 'O')
+    {
+        return 'O'; // com esse ganha na terceira linha
+    }
+    else if (A1 == 'O' && B1 == 'O' && C1 == 'O')
+    {
+        return 'O'; // com esse ganha na primeira coluna
+    }
+    else if (A2 == 'O' && B2 == 'O' && C2 == 'O')
+    {
+        return 'O'; // com esse ganha na segunda coluna
+    }
+    else if (A3 == 'O' && B3 == 'O' && C3 == 'O')
+    {
+        return 'O'; // com esse ganha na terceira coluna
+    }
+    else if (A1 == 'O' && B2 == 'O' && C3 == 'O')
+    {
+        return 'O'; // com esse ganha na primeira diagonal
+    }
+    else if (A3 == 'O' && B2 == 'O' && C1 == 'O')
+    {
+        return 'O';
+    }
+
+    return '?';
+}
+
 int main()
+
 {
     // permiti colocar acentos
     setlocale(LC_ALL, "Portuguese");
@@ -329,14 +403,15 @@ int main()
             // jogador inicial
             char jogadorDaVez = 'X';
 
-            while (escolha != '0')
+            char parar = '?';
+            // posição de jogada
+            while (parar != '0')
             {
                 estrutura_jogo(nome_o, nome_x, A1, A2, A3, B1, B2, B3, C1, C2, C3);
                 printf("Escolha a posição que será jogada (Ex: A1): \n");
+
                 char entrada[2];
                 scanf("%2s", &entrada);
-
-                printf("Valor entrada: %s", entrada);
 
                 if (entrada[0] == 'A' && entrada[1] == '1')
                 {
@@ -377,10 +452,84 @@ int main()
                 else
                 {
                     printf("Opção inválida ou ocupada. Tente novamente:\n");
+                    continue;
                 }
 
-                printf("Passou aqui");
+                // verificar o vencedor
+                char vencedor = verificar_ganhador(A1, A2, A3, B1, B2, B3, C1, C2, C3);
+                if (vencedor == 'X')
+                {
+                    char sair = '?';
+                    while (sair != '0')
+                    {
+                        tela_vencedor(vencedor);
+                        printf("Para retornar a tela inicial é só digitar 0: \n");
+                        char escolha;
+                        scanf("%c", &escolha);
+                        switch (escolha)
+                        {
+                        case '0':
+                            printf("Sair");
+                            sair = '0';
+                            parar = '0';
 
+                        default:
+                            printf("Digitou errado!");
+                        }
+                    }
+                }
+                else if (vencedor == 'O')
+                {
+                    char sair = '?';
+                    while (sair != '0')
+                    {
+                        tela_vencedor(vencedor);
+                        printf("Para retornar a tela inicial é só digitar 0: \n");
+                        char escolha;
+                        scanf("%c", &escolha);
+                        switch (escolha)
+                        {
+                        case '0':
+                            printf("Sair");
+                            sair = '0';
+                            parar = '0';
+
+                        default:
+                            printf("Digitou errado!");
+                        }
+                    }
+                } else if (vencedor = ) {
+                    // verificar empate
+                    char sair = '!';
+                    while(sair != '0'){
+                        if (vencedor != 'X' && vencedor != 'O')
+                        {
+                            verificar_ganhador == vencedor;
+                            return '?';
+                        } else if (vencedor = '?'){
+                            tela_empate == vencedor;
+                        }
+                        
+                        tela_empate(vencedor);
+                        printf("Para retornar a tela inicial é só digitar 0: \n");
+                        char escolha;
+                        scanf(" %c", &escolha);
+                          switch (escolha)
+                        {
+                        case '0':
+                            printf("Sair");
+                            sair = '0';
+                            parar = '0';
+                            break;
+                        default:
+                            printf("Digitou errado!");
+                            break;
+                        }
+                    }
+                    return '?';
+                }
+
+                // trocando o jogador
                 if (jogadorDaVez == 'X')
                 {
                     jogadorDaVez = 'O';
@@ -394,15 +543,253 @@ int main()
             break;
         case '4':
             // segundo jogo, jogar com a maquina
-            while (escolha != '0')
+            init();
+            char A1 = ' ';
+            char A2 = ' ';
+            char A3 = ' ';
+            char B1 = ' ';
+            char B2 = ' ';
+            char B3 = ' ';
+            char C1 = ' ';
+            char C2 = ' ';
+            char C3 = ' ';
+
+            // jogador inicial
+            char jogadorDaVez = 'X';
+
+            char parar = '?';
+            // posição de jogada
+            while (parar != '0')
             {
+                estrutura_jogo(nome_o, nome_x, A1, A2, A3, B1, B2, B3, C1, C2, C3);
+                printf("Escolha a posição que será jogada (Ex: A1): \n");
+
+                char entrada[2];
+                scanf("%2s", &entrada);
+
+                if (entrada[0] == 'A' && entrada[1] == '1')
+                {
+                    A1 = jogadorDaVez;
+                }
+                else if (entrada[0] == 'A' && entrada[1] == '2')
+                {
+                    A2 = jogadorDaVez;
+                }
+                else if (entrada[0] == 'A' && entrada[1] == '3')
+                {
+                    A3 = jogadorDaVez;
+                }
+                else if (entrada[0] == 'B' && entrada[1] == '1')
+                {
+                    B1 = jogadorDaVez;
+                }
+                else if (entrada[0] == 'B' && entrada[1] == '2')
+                {
+                    B2 = jogadorDaVez;
+                }
+                else if (entrada[0] == 'B' && entrada[1] == '3')
+                {
+                    B3 = jogadorDaVez;
+                }
+                else if (entrada[0] == 'C' && entrada[1] == '1')
+                {
+                    C1 = jogadorDaVez;
+                }
+                else if (entrada[0] == 'C' && entrada[1] == '2')
+                {
+                    C2 = jogadorDaVez;
+                }
+                else if (entrada[0] == 'C' && entrada[1] == '3')
+                {
+                    C3 = jogadorDaVez;
+                }
+                else
+                {
+                    printf("Opção inválida ou ocupada. Tente novamente:\n");
+                    continue;
+                }
+
+                // verificar o vencedor
+                char vencedor = verificar_ganhador(A1, A2, A3, B1, B2, B3, C1, C2, C3);
+                if (vencedor == 'X')
+                {
+                    char sair = '?';
+                    while (sair != '0')
+                    {
+                        tela_vencedor(vencedor);
+                        printf("Para retornar a tela inicial é só digitar 0: \n");
+                        char escolha;
+                        scanf("%c", &escolha);
+                        switch (escolha)
+                        {
+                        case '0':
+                            printf("Sair");
+                            sair = '0';
+                            parar = '0';
+
+                        default:
+                            printf("Digitou errado!");
+                        }
+                    }
+                }
+                else if (vencedor == 'O')
+                {
+                    char sair = '?';
+                    while (sair != '0')
+                    {
+                        tela_vencedor(vencedor);
+                        printf("Para retornar a tela inicial é só digitar 0: \n");
+                        char escolha;
+                        scanf("%c", &escolha);
+                        switch (escolha)
+                        {
+                        case '0':
+                            printf("Sair");
+                            sair = '0';
+                            parar = '0';
+
+                        default:
+                            printf("Digitou errado!");
+                        }
+                    }
+                }
+
+                // trocando o jogador
+                if (jogadorDaVez == 'X')
+                {
+                    jogadorDaVez = 'O';
+                }
+                else
+                {
+                    jogadorDaVez = 'X';
+                }
             }
+
             break;
         case '5':
             // terceiro jogo especial
-            while (escolha != '0')
+            init();
+            char A1 = ' ';
+            char A2 = ' ';
+            char A3 = ' ';
+            char B1 = ' ';
+            char B2 = ' ';
+            char B3 = ' ';
+            char C1 = ' ';
+            char C2 = ' ';
+            char C3 = ' ';
+
+            // jogador inicial
+            char jogadorDaVez = 'X';
+
+            char parar = '?';
+            // posição de jogada
+            while (parar != '0')
             {
+                estrutura_jogo(nome_o, nome_x, A1, A2, A3, B1, B2, B3, C1, C2, C3);
+                printf("Escolha a posição que será jogada (Ex: A1): \n");
+
+                char entrada[2];
+                scanf("%2s", &entrada);
+
+                if (entrada[0] == 'A' && entrada[1] == '1')
+                {
+                    A1 = jogadorDaVez;
+                }
+                else if (entrada[0] == 'A' && entrada[1] == '2')
+                {
+                    A2 = jogadorDaVez;
+                }
+                else if (entrada[0] == 'A' && entrada[1] == '3')
+                {
+                    A3 = jogadorDaVez;
+                }
+                else if (entrada[0] == 'B' && entrada[1] == '1')
+                {
+                    B1 = jogadorDaVez;
+                }
+                else if (entrada[0] == 'B' && entrada[1] == '2')
+                {
+                    B2 = jogadorDaVez;
+                }
+                else if (entrada[0] == 'B' && entrada[1] == '3')
+                {
+                    B3 = jogadorDaVez;
+                }
+                else if (entrada[0] == 'C' && entrada[1] == '1')
+                {
+                    C1 = jogadorDaVez;
+                }
+                else if (entrada[0] == 'C' && entrada[1] == '2')
+                {
+                    C2 = jogadorDaVez;
+                }
+                else if (entrada[0] == 'C' && entrada[1] == '3')
+                {
+                    C3 = jogadorDaVez;
+                }
+                else
+                {
+                    printf("Opção inválida ou ocupada. Tente novamente:\n");
+                    continue;
+                }
+
+                // verificar o vencedor
+                char vencedor = verificar_ganhador(A1, A2, A3, B1, B2, B3, C1, C2, C3);
+                if (vencedor == 'X')
+                {
+                    char sair = '?';
+                    while (sair != '0')
+                    {
+                        tela_vencedor(vencedor);
+                        printf("Para retornar a tela inicial é só digitar 0: \n");
+                        char escolha;
+                        scanf("%c", &escolha);
+                        switch (escolha)
+                        {
+                        case '0':
+                            printf("Sair");
+                            sair = '0';
+                            parar = '0';
+
+                        default:
+                            printf("Digitou errado!");
+                        }
+                    }
+                }
+                else if (vencedor == 'O')
+                {
+                    char sair = '?';
+                    while (sair != '0')
+                    {
+                        tela_vencedor(vencedor);
+                        printf("Para retornar a tela inicial é só digitar 0: \n");
+                        char escolha;
+                        scanf("%c", &escolha);
+                        switch (escolha)
+                        {
+                        case '0':
+                            printf("Sair");
+                            sair = '0';
+                            parar = '0';
+
+                        default:
+                            printf("Digitou errado!");
+                        }
+                    }
+                }
+
+                // trocando o jogador
+                if (jogadorDaVez == 'X')
+                {
+                    jogadorDaVez = 'O';
+                }
+                else
+                {
+                    jogadorDaVez = 'X';
+                }
             }
+
             break;
         case '6':
             opcao_menu = '6';
