@@ -2,13 +2,14 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <time.h>
 
 char tabuleiro[3][3] = {
     {' ', ' ', ' '},
     {' ', ' ', ' '},
     {' ', ' ', ' '}};
-char nome_x[50] = "Bruna ";
-char nome_o[50] = "Luiz";
+char nome_x[50] = "";
+char nome_o[50] = "";
 int linha, coluna;
 int posicao;
 
@@ -144,23 +145,23 @@ void estrutura_jogo(char nome_o[50], char nome_x[50], char A1, char A2, char A3,
     // base da estrutura do jogo
     system("cls");
     printf("+---------------------------------------------------+\n");
-    printf("|                                                   \n");
-    printf("|                  JOGO DA VELHA!!                  \n");
-    printf("|                                                   \n");
-    printf("|  JOGADOR (O) %s                                   \n", nome_o);
-    printf("|  JOGADOR (X) %s                                   \n", nome_x);
-    printf("|                1         2        3               \n");
-    printf("|                     |         |                   \n");
-    printf("|          A      %c  |    %c   |   %c      A      \n", A1, A2, A3);
-    printf("|               ______|_________|_______            \n");
-    printf("|                     |         |                   \n");
-    printf("|          B      %c  |    %c   |    %c      B       \n", B1, B2, B3);
-    printf("|               ______|_________|_______            \n");
-    printf("|                     |         |                   \n");
-    printf("|          C      %c  |    %c   |    %c      C      \n", C1, C2, C3);
-    printf("|                     |         |                   \n");
-    printf("|                1         2         3              \n");
-    printf("|                                                   \n");
+    printf("|                                                   |\n");
+    printf("|                  JOGO DA VELHA!!                  |\n");
+    printf("|                                                   |\n");
+    printf("|  JOGADOR (O) %s                                   |\n", nome_o);
+    printf("|  JOGADOR (X) %s                                   |\n", nome_x);
+    printf("|                1         2        3               |\n");
+    printf("|                     |         |                   |\n");
+    printf("|          A      %c  |    %c   |   %c      A       |\n", A1, A2, A3);
+    printf("|               ______|_________|_______            |\n");
+    printf("|                     |         |                   |\n");
+    printf("|          B      %c  |    %c   |    %c      B      |\n", B1, B2, B3);
+    printf("|               ______|_________|_______            |\n");
+    printf("|                     |         |                   |\n");
+    printf("|          C      %c  |    %c   |    %c      C      |\n", C1, C2, C3);
+    printf("|                     |         |                   |\n");
+    printf("|                1         2         3              |\n");
+    printf("|                                                   |\n");
     printf("+---------------------------------------------------+\n");
 }
 
@@ -361,9 +362,9 @@ char perguntar_jogador(char nome_o[50], char nome_x[50])
         printf("|                  COM QUAL JOGADOR:                |\n");
         printf("|                                                   |\n");
         printf("|                                                   |\n");
-        printf("|               X - PARA O JOGADOR %d:              |\n", nome_x);
+        printf("|               X - PARA O JOGADOR %s:              |\n", nome_x);
         printf("|                                                   |\n");
-        printf("|               O - PARA O JOGADOR %d:              |\n", nome_o);
+        printf("|               O - PARA O JOGADOR %s:              |\n", nome_o);
         printf("|                                                   |\n");
         printf("|                                                   |\n");
         printf("|                                                   |\n");
@@ -384,6 +385,81 @@ char perguntar_jogador(char nome_o[50], char nome_x[50])
     return jogador;
 }
 
+char jogador_computador(char A1, char A2, char A3, char B1, char B2, char B3, char C1, char C2, char C3, char simbolo)
+{
+    int jogou = 0;
+    while (!jogou)
+    {
+        int pos = rand() % 9;
+        switch (pos)
+        {
+        case 0:
+            if (A1 == ' ')
+            {
+                A1 = simbolo;
+                jogou = 1;
+            }
+            break;
+        case 1:
+            if (A2 == ' ')
+            {
+                A2 = simbolo;
+                jogou = 1;
+            }
+            break;
+        case 2:
+            if (A3 == ' ')
+            {
+                A3 = simbolo;
+                jogou = 1;
+            }
+            break;
+        case 3:
+            if (B1 == ' ')
+            {
+                B1 = simbolo;
+                jogou = 1;
+            }
+            break;
+        case 4:
+            if (B2 == ' ')
+            {
+                B2 = simbolo;
+                jogou = 1;
+            }
+            break;
+        case 5:
+            if (B3 == ' ')
+            {
+                B3 = simbolo;
+                jogou = 1;
+            }
+            break;
+        case 6:
+            if (C1 == ' ')
+            {
+                C1 = simbolo;
+                jogou = 1;
+            }
+            break;
+        case 7:
+            if (C2 == ' ')
+            {
+                C2 = simbolo;
+                jogou = 1;
+            }
+            break;
+        case 8:
+            if (C3 == ' ')
+            {
+                C3 = simbolo;
+                jogou = 1;
+            }
+            break;
+        }
+    }
+}
+
 int main()
 
 {
@@ -391,7 +467,7 @@ int main()
     setlocale(LC_ALL, "Portuguese");
 
     char opcao_menu = '9';
-
+    srand(time(NULL)); // inicia jogadas aleatorias
     int vitoriasX = 0;
     int derrotasX = 0;
     int empatesX = 0;
@@ -440,7 +516,7 @@ int main()
             // mostrar o ranking com o histórico dos outros jogadores
             while (escolha != '0')
             {
-                historico_ranking(nome_o, nome_x, vitoriasX, derrotasX, empatesX, vitoriasO, derrotasO,  empatesO);
+                historico_ranking(nome_o, nome_x, vitoriasX, derrotasX, empatesX, vitoriasO, derrotasO, empatesO);
                 printf("Para retornar a tela inicial é só digitar 0: ");
                 scanf(" %c", &escolha);
             }
@@ -603,22 +679,14 @@ int main()
         case '4':
             // segundo jogo, jogar com a maquina
             init();
+            char simbolo;
             char jogador = perguntar_jogador(nome_o, nome_x);
-
-            //char A1 = ' ';
-            //char A2 = ' ';
-            //char A3 = ' ';
-            //char B1 = ' ';
-            //char B2 = ' ';
-            //char B3 = ' ';
-            //char C1 = ' ';
-            //char C2 = ' ';
-            //char C3 = ' ';
-
-            // jogador inicial
-            //char jogadorDaVez = 'X';
-            char joagadorComputador;
-            //char parar = '?';
+            char joagadorComputador = (jogador == 'X') ? 'O' : 'X';
+            if (jogadorDaVez == jogador)
+            {
+                jogador_computador(A1, A2, A3, B1, B2, B3, C1, C2, C3, simbolo);
+                jogadorDaVez = jogador; // volta para o jogador
+            }
             // posição de jogada
             while (parar != '0')
             {
