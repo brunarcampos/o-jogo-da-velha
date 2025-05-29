@@ -10,6 +10,7 @@ char tabuleiro[3][3] = {
     {' ', ' ', ' '}};
 char nome_x[50] = "";
 char nome_o[50] = "";
+char joagadorComputador[10] = "ModoPC";
 int linha, coluna;
 int posicao;
 
@@ -33,7 +34,7 @@ void tela_inicial()
     printf("|                                                   |\n");
     printf("|               4- JOGAR COM O COMPUTADOR           |\n");
     printf("|                                                   |\n");
-    printf("|               5- JOGAR COM A VELHA                |\n");
+    printf("|               5- JOGAR EXTRA                      |\n");
     printf("|                                                   |\n");
     printf("|               6- SAIR                             |\n");
     printf("|                                                   |\n");
@@ -140,7 +141,7 @@ void historico_ranking(char nome_o[50], char nome_x[50], int vitoriasX, int derr
     printf("+---------------------------------------------------+\n");
 }
 
-void estrutura_jogo(char nome_o[50], char nome_x[50], char A1, char A2, char A3, char B1, char B2, char B3, char C1, char C2, char C3)
+void estrutura_jogo(char nome_o[50], char nome_x[50], char joagadorComputador[10], char A1, char A2, char A3, char B1, char B2, char B3, char C1, char C2, char C3)
 {
     // base da estrutura do jogo
     system("cls");
@@ -148,8 +149,8 @@ void estrutura_jogo(char nome_o[50], char nome_x[50], char A1, char A2, char A3,
     printf("|                                                   |\n");
     printf("|                  JOGO DA VELHA!!                  |\n");
     printf("|                                                   |\n");
-    printf("|  JOGADOR (O) %s                                   |\n", nome_o);
-    printf("|  JOGADOR (X) %s                                   |\n", nome_x);
+    printf("|  JOGADOR (O) %s                                   |\n", nome_o || joagadorComputador);
+    printf("|  JOGADOR (X) %s                                   |\n", nome_x || joagadorComputador);
     printf("|                1         2        3               |\n");
     printf("|                     |         |                   |\n");
     printf("|          A      %c  |    %c   |   %c      A       |\n", A1, A2, A3);
@@ -346,7 +347,7 @@ int tabuleiro_completo(char A1, char A2, char A3, char B1, char B2, char B3, cha
     }
 }
 
-char perguntar_jogador(char nome_o[50], char nome_x[50])
+char perguntar_jogador(char nome_o[50], char nome_x[50], char joagadorComputador)
 {
     char jogador;
     char parar = '?';
@@ -362,9 +363,9 @@ char perguntar_jogador(char nome_o[50], char nome_x[50])
         printf("|                  COM QUAL JOGADOR:                |\n");
         printf("|                                                   |\n");
         printf("|                                                   |\n");
-        printf("|               X - PARA O JOGADOR %s:              |\n", nome_x);
+        printf("|               X - PARA O JOGADOR %s:              |\n", nome_x || joagadorComputador);
         printf("|                                                   |\n");
-        printf("|               O - PARA O JOGADOR %s:              |\n", nome_o);
+        printf("|               O - PARA O JOGADOR %s:              |\n", nome_o || joagadorComputador);
         printf("|                                                   |\n");
         printf("|                                                   |\n");
         printf("|                                                   |\n");
@@ -372,7 +373,7 @@ char perguntar_jogador(char nome_o[50], char nome_x[50])
         printf("|                                                   |\n");
         printf("+---------------------------------------------------+\n");
 
-        scanf("%d", jogador);
+        scanf("%c", &jogador);
         switch (jogador)
         {
         case 'X':
@@ -541,7 +542,7 @@ int main()
             // posição de jogada
             while (parar != '0')
             {
-                estrutura_jogo(nome_o, nome_x, A1, A2, A3, B1, B2, B3, C1, C2, C3);
+                estrutura_jogo(nome_o, nome_x, joagadorComputador, A1, A2, A3, B1, B2, B3, C1, C2, C3);
                 printf("Escolha a posição que será jogada (Ex: A1): \n");
 
                 char entrada[2];
@@ -680,7 +681,7 @@ int main()
             // segundo jogo, jogar com a maquina
             init();
             char simbolo;
-            char jogador = perguntar_jogador(nome_o, nome_x);
+            char jogador = perguntar_jogador(nome_o, nome_x, joagadorComputador);
             char joagadorComputador = (jogador == 'X') ? 'O' : 'X';
             if (jogadorDaVez == jogador)
             {
@@ -690,7 +691,7 @@ int main()
             // posição de jogada
             while (parar != '0')
             {
-                estrutura_jogo(nome_o, nome_x, A1, A2, A3, B1, B2, B3, C1, C2, C3);
+                estrutura_jogo(nome_o, nome_x, joagadorComputador, A1, A2, A3, B1, B2, B3, C1, C2, C3);
                 printf("Escolha a posição que será jogada (Ex: A1): \n");
 
                 char entrada[2];
@@ -749,7 +750,7 @@ int main()
                         tela_vencedor(vencedor);
                         printf("Para retornar a tela inicial é só digitar 0: \n");
                         char escolha;
-                        scanf("%c", &escolha);
+                        scanf(" %c", &escolha);
                         switch (escolha)
                         {
                         case '0':
@@ -770,7 +771,7 @@ int main()
                         tela_vencedor(vencedor);
                         printf("Para retornar a tela inicial é só digitar 0: \n");
                         char escolha;
-                        scanf("%c", &escolha);
+                        scanf(" %c", &escolha);
                         switch (escolha)
                         {
                         case '0':
