@@ -143,13 +143,13 @@ void historico_ranking(char nome_o[50], char nome_x[50], int vitoriasX, int derr
 void estrutura_jogo(char nome_o[50], char nome_x[50], char A1, char A2, char A3, char B1, char B2, char B3, char C1, char C2, char C3)
 {
     // base da estrutura do jogo
-    system("cls");
+    //system("cls");
     printf("+---------------------------------------------------+\n");
     printf("|                                                   |\n");
     printf("|                  JOGO DA VELHA!!                  |\n");
     printf("|                                                   |\n");
-    printf("|  JOGADOR (O) %s                                   |\n", nome_o );
-    printf("|  JOGADOR (X) %s                                   |\n", nome_x );
+    printf("|  JOGADOR (X) %s                                   |\n", nome_x);
+    printf("|  JOGADOR (O) %s                                   |\n", nome_o);
     printf("|                1         2        3               |\n");
     printf("|                     |         |                   |\n");
     printf("|          A       %c  |     %c   |   %c      A       |\n", A1, A2, A3);
@@ -385,83 +385,53 @@ char perguntar_jogador(char nome_o[50], char nome_x[50])
     return jogador;
 }
 
-char jogador_computador(char A1, char A2, char A3, char B1, char B2, char B3, char C1, char C2, char C3, char simbolo)
+char *jogada_do_computador(char A1, char A2, char A3, char B1, char B2, char B3, char C1, char C2, char C3)
 {
-    int jogou = 0;
-    while (!jogou)
+    char *escolha;
+
+    if (A1 == ' ')
     {
-        int pos = rand() % 9;
-        switch (pos)
-        {
-        case 0:
-            if (A1 == ' ')
-            {
-                A1 = simbolo;
-                jogou = 1;
-            }
-            break;
-        case 1:
-            if (A2 == ' ')
-            {
-                A2 = simbolo;
-                jogou = 1;
-            }
-            break;
-        case 2:
-            if (A3 == ' ')
-            {
-                A3 = simbolo;
-                jogou = 1;
-            }
-            break;
-        case 3:
-            if (B1 == ' ')
-            {
-                B1 = simbolo;
-                jogou = 1;
-            }
-            break;
-        case 4:
-            if (B2 == ' ')
-            {
-                B2 = simbolo;
-                jogou = 1;
-            }
-            break;
-        case 5:
-            if (B3 == ' ')
-            {
-                B3 = simbolo;
-                jogou = 1;
-            }
-            break;
-        case 6:
-            if (C1 == ' ')
-            {
-                C1 = simbolo;
-                jogou = 1;
-            }
-            break;
-        case 7:
-            if (C2 == ' ')
-            {
-                C2 = simbolo;
-                jogou = 1;
-            }
-            break;
-        case 8:
-            if (C3 == ' ')
-            {
-                C3 = simbolo;
-                jogou = 1;
-            }
-            break;
-        }
+        escolha = "A1";
     }
+    else if (B2 == ' ')
+    {
+        escolha = "B2";
+    }
+    else if (C2 == ' ')
+    {
+        escolha = "C2";
+    }
+    else if (A3 == ' ')
+    {
+        escolha = "A3";
+    }
+    else if (B1 == ' ')
+    {
+        escolha = "B1";
+    }
+    else if (B3 == ' ')
+    {
+        escolha = "B3";
+    }
+    else if (C1 == ' ')
+    {
+        escolha = "C1";
+    }
+    else if (A2 == ' ')
+    {
+        escolha = "A2";
+    }
+    else if (C3 == ' ')
+    {
+        escolha = "C3";
+    }
+
+    printf("retorno");
+
+    return escolha;
 }
 
 int main()
-
 {
     // permiti colocar acentos
     setlocale(LC_ALL, "Portuguese");
@@ -474,6 +444,16 @@ int main()
     int vitoriasO = 0;
     int derrotasO = 0;
     int empatesO = 0;
+
+    char A1 = ' ';
+    char A2 = ' ';
+    char A3 = ' ';
+    char B1 = ' ';
+    char B2 = ' ';
+    char B3 = ' ';
+    char C1 = ' ';
+    char C2 = ' ';
+    char C3 = ' ';
 
     while (opcao_menu != '6')
     {
@@ -524,15 +504,15 @@ int main()
         case '3':
             // primeiro jogo em dubla
             init();
-            char A1 = ' ';
-            char A2 = ' ';
-            char A3 = ' ';
-            char B1 = ' ';
-            char B2 = ' ';
-            char B3 = ' ';
-            char C1 = ' ';
-            char C2 = ' ';
-            char C3 = ' ';
+            A1 = ' ';
+            A2 = ' ';
+            A3 = ' ';
+            B1 = ' ';
+            B2 = ' ';
+            B3 = ' ';
+            C1 = ' ';
+            C2 = ' ';
+            C3 = ' ';
 
             // jogador inicial
             char jogadorDaVez = 'X';
@@ -679,58 +659,91 @@ int main()
         case '4':
             // segundo jogo, jogar com a maquina
             init();
+            A1 = ' ';
+            A2 = ' ';
+            A3 = ' ';
+            B1 = ' ';
+            B2 = ' ';
+            B3 = ' ';
+            C1 = ' ';
+            C2 = ' ';
+            C3 = ' ';
+
             char simbolo;
             char jogador = perguntar_jogador(nome_o, nome_x);
-            char jogadorComputador = (jogador == 'X') ? 'O' : 'X';
-            if (jogadorDaVez == jogador)
-            {
-                jogador_computador(A1, A2, A3, B1, B2, B3, C1, C2, C3, simbolo);
-                jogadorDaVez = jogador; // volta para o jogador
+            char jogadorComputador = jogador == 'X' ? 'O' : 'X';
+            char jogadorDaVez4 = jogador == 'X' ? 'X' : 'O';
+
+            char *nomeX;
+            char *nomeO;
+
+            if (jogadorComputador == 'X') {
+                nomeX = "Computador";
+            } else {
+                nomeX = nome_x;
             }
+
+            if (jogadorComputador == 'O') {
+                nomeO = "Computador";
+            } else {
+                nomeO = nome_o;
+            }
+
             // posição de jogada
             while (parar != '0')
             {
-                estrutura_jogo(nome_o, nome_x, A1, A2, A3, B1, B2, B3, C1, C2, C3);
+                estrutura_jogo(nomeO, nomeX, A1, A2, A3, B1, B2, B3, C1, C2, C3);
                 printf("Escolha a posição que será jogada (Ex: A1): \n");
 
+
                 char entrada[2];
-                scanf("%2s", &entrada);
+                if (jogadorComputador == jogadorDaVez4)
+                {
+                    char *jogada = jogada_do_computador(A1, A2, A3, B1, B2, B3, C1, C2, C3); // 'A3'
+                    printf("Computado: %s \n", jogada);
+                    entrada[0] = jogada[0];
+                    entrada[1] = jogada[1];
+                }
+                else
+                {
+                    scanf("%2s", &entrada);
+                }
 
                 if (entrada[0] == 'A' && entrada[1] == '1')
                 {
-                    A1 = jogadorDaVez;
+                    A1 = jogadorDaVez4;
                 }
                 else if (entrada[0] == 'A' && entrada[1] == '2')
                 {
-                    A2 = jogadorDaVez;
+                    A2 = jogadorDaVez4;
                 }
                 else if (entrada[0] == 'A' && entrada[1] == '3')
                 {
-                    A3 = jogadorDaVez;
+                    A3 = jogadorDaVez4;
                 }
                 else if (entrada[0] == 'B' && entrada[1] == '1')
                 {
-                    B1 = jogadorDaVez;
+                    B1 = jogadorDaVez4;
                 }
                 else if (entrada[0] == 'B' && entrada[1] == '2')
                 {
-                    B2 = jogadorDaVez;
+                    B2 = jogadorDaVez4;
                 }
                 else if (entrada[0] == 'B' && entrada[1] == '3')
                 {
-                    B3 = jogadorDaVez;
+                    B3 = jogadorDaVez4;
                 }
                 else if (entrada[0] == 'C' && entrada[1] == '1')
                 {
-                    C1 = jogadorDaVez;
+                    C1 = jogadorDaVez4;
                 }
                 else if (entrada[0] == 'C' && entrada[1] == '2')
                 {
-                    C2 = jogadorDaVez;
+                    C2 = jogadorDaVez4;
                 }
                 else if (entrada[0] == 'C' && entrada[1] == '3')
                 {
-                    C3 = jogadorDaVez;
+                    C3 = jogadorDaVez4;
                 }
                 else
                 {
@@ -806,18 +819,16 @@ int main()
                         }
                     }
                 }
-
                 // trocando o jogador
-                if (jogadorDaVez == 'X')
+                if (jogadorDaVez4 == 'X')
                 {
-                    jogadorDaVez = 'O';
+                    jogadorDaVez4 = 'O';
                 }
                 else
                 {
-                    jogadorDaVez = 'X';
+                    jogadorDaVez4 = 'X';
                 }
             }
-
             break;
         case '5':
             // terceiro jogo especial
@@ -829,6 +840,7 @@ int main()
         default:
             printf("Opção inválida.\n");
         }
+        break;
     }
     return 0;
 }
