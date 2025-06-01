@@ -8,8 +8,8 @@ char tabuleiro[3][3] = {
     {' ', ' ', ' '},
     {' ', ' ', ' '},
     {' ', ' ', ' '}};
-char nome_x[50] = "bruna";
-char nome_o[50] = "luiz";
+char nome_x[50] = "";
+char nome_o[50] = "";
 int linha, coluna;
 int posicao;
 
@@ -20,23 +20,23 @@ void tela_inicial()
     // criar tela inicial do jogo
     system("cls");
     printf("+---------------------------------------------------+\n");
-    printf("|                                                   |\n");
-    printf("|           BEM VINDO AO JOGO DA VELHA!!            |\n");
-    printf("|                                                   |\n");
-    printf("|                   MENU PRINCIPAL                  |\n");
-    printf("|                                                   |\n");
-    printf("|               1- CADASTRE JOGADORES               |\n");
-    printf("|                                                   |\n");
-    printf("|               2- HISTÓRICO RANKING                |\n");
-    printf("|                                                   |\n");
-    printf("|               3- JOGAR EM DUPLA                   |\n");
-    printf("|                                                   |\n");
-    printf("|               4- JOGAR COM O COMPUTADOR           |\n");
-    printf("|                                                   |\n");
-    printf("|               5- JOGAR EXTRA                      |\n");
-    printf("|                                                   |\n");
-    printf("|               6- SAIR                             |\n");
-    printf("|                                                   |\n");
+    printf("|                                                    \n");
+    printf("|           BEM VINDO AO JOGO DA VELHA!!             \n");
+    printf("|                                                    \n");
+    printf("|                   MENU PRINCIPAL                   \n");
+    printf("|                                                    \n");
+    printf("|               1- CADASTRE JOGADORES                \n");
+    printf("|                                                    \n");
+    printf("|               2- HISTÓRICO RANKING                 \n");
+    printf("|                                                    \n");
+    printf("|               3- JOGO EM DUPLA                    \n");
+    printf("|                                                    \n");
+    printf("|               4- JOGO COM O COMPUTADOR            \n");
+    printf("|                                                    \n");
+    printf("|               5- JOGO EXTRA (MÁXIMO DE 7 JOGADAS)  \n");
+    printf("|                                                    \n");
+    printf("|               6- SAIR                              \n");
+    printf("|                                                    \n");
     printf("+---------------------------------------------------+\n");
 }
 
@@ -45,23 +45,23 @@ void tela_cadastro()
     // criar tela de cadastro do jogo
     system("cls");
     printf("+---------------------------------------------------+\n");
-    printf("|                                                   |\n");
-    printf("|                  JOGO DA VELHA!!                  |\n");
-    printf("|                                                   |\n");
-    printf("|                                                   |\n");
-    printf("|                                                   |\n");
-    printf("|        ESCOLHA EM QUAL VOCÊ QUER SE CADASTRAR:    |\n");
-    printf("|                                                   |\n");
-    printf("|                                                   |\n");
-    printf("|                                                   |\n");
-    printf("|              1-  PARA SE CADASTRAR NO X           |\n");
-    printf("|                                                   |\n");
-    printf("|                                                   |\n");
-    printf("|                                                   |\n");
-    printf("|              2- PARA SE CADASTRAR NO O            |\n");
-    printf("|                                                   |\n");
-    printf("|                                                   |\n");
-    printf("|                                        0-VOLTAR   |\n");
+    printf("|                                                    \n");
+    printf("|                  JOGO DA VELHA!!                   \n");
+    printf("|                                                    \n");
+    printf("|                                                    \n");
+    printf("|                                                    \n");
+    printf("|        ESCOLHA EM QUAL VOCÊ QUER SE CADASTRAR:     \n");
+    printf("|                                                    \n");
+    printf("|                                                    \n");
+    printf("|                                                    \n");
+    printf("|              1-  PARA SE CADASTRAR NO X            \n");
+    printf("|                                                    \n");
+    printf("|                                                    \n");
+    printf("|                                                    \n");
+    printf("|              2- PARA SE CADASTRAR NO O             \n");
+    printf("|                                                    \n");
+    printf("|                                                    \n");
+    printf("|                                        0-VOLTAR    \n");
     printf("+---------------------------------------------------+\n");
 }
 
@@ -70,23 +70,23 @@ void tela_cadastro_x()
     // criar tela de cadastro X
     system("cls");
     printf("+---------------------------------------------------+\n");
-    printf("|                                                   |\n");
-    printf("|                  JOGO DA VELHA!!                  |\n");
-    printf("|                                                   |\n");
-    printf("|                                                   |\n");
-    printf("|              VOCÊ ESCOLHEU A OPÇÃO X              |\n");
-    printf("|                                                   |\n");
-    printf("|                                                   |\n");
-    printf("|             DIGITE O SEU PRIMEIRO NOME:           |\n");
-    printf("|                                                   |\n");
-    printf("|                                                   |\n");
-    printf("|                                                   |\n");
-    printf("|                                                   |\n");
-    printf("|                                                   |\n");
-    printf("|                                                   |\n");
-    printf("|                                                   |\n");
-    printf("|                                                   |\n");
-    printf("|                                                   |\n");
+    printf("|                                                    \n");
+    printf("|                  JOGO DA VELHA!!                   \n");
+    printf("|                                                    \n");
+    printf("|                                                    \n");
+    printf("|              VOCÊ ESCOLHEU A OPÇÃO X               \n");
+    printf("|                                                    \n");
+    printf("|                                                    \n");
+    printf("|             DIGITE O SEU PRIMEIRO NOME:            \n");
+    printf("|                                                    \n");
+    printf("|                                                    \n");
+    printf("|                                                    \n");
+    printf("|                                                    \n");
+    printf("|                                                    \n");
+    printf("|                                                    \n");
+    printf("|                                                    \n");
+    printf("|                                                    \n");
+    printf("|                                                    \n");
     printf("+---------------------------------------------------+\n");
 }
 
@@ -95,23 +95,23 @@ void tela_cadastro_o()
     // criar tela de cadastro O
     system("cls");
     printf("+---------------------------------------------------+\n");
-    printf("|                                                   |\n");
-    printf("|                  JOGO DA VELHA!!                  |\n");
-    printf("|                                                   |\n");
-    printf("|                                                   |\n");
-    printf("|              VOCÊ ESCOLHEU A OPÇÃO O              |\n");
-    printf("|                                                   |\n");
-    printf("|                                                   |\n");
-    printf("|             DIGITE O SEU PRIMEIRO NOME:           |\n");
-    printf("|                                                   |\n");
-    printf("|                                                   |\n");
-    printf("|                                                   |\n");
-    printf("|                                                   |\n");
-    printf("|                                                   |\n");
-    printf("|                                                   |\n");
-    printf("|                                                   |\n");
-    printf("|                                                   |\n");
-    printf("|                                                   |\n");
+    printf("|                                                    \n");
+    printf("|                  JOGO DA VELHA!!                   \n");
+    printf("|                                                    \n");
+    printf("|                                                    \n");
+    printf("|              VOCÊ ESCOLHEU A OPÇÃO O               \n");
+    printf("|                                                    \n");
+    printf("|                                                    \n");
+    printf("|             DIGITE O SEU PRIMEIRO NOME:            \n");
+    printf("|                                                    \n");
+    printf("|                                                    \n");
+    printf("|                                                    \n");
+    printf("|                                                    \n");
+    printf("|                                                    \n");
+    printf("|                                                    \n");
+    printf("|                                                    \n");
+    printf("|                                                    \n");
+    printf("|                                                    \n");
     printf("+---------------------------------------------------+\n");
 }
 
@@ -120,48 +120,48 @@ void historico_ranking(char nome_o[50], char nome_x[50], int vitoriasX, int derr
     // criar um ranking e seus histórico
     system("cls");
     printf("+---------------------------------------------------+\n");
-    printf("|                                                   |\n");
-    printf("|                  JOGO DA VELHA!!                  |\n");
-    printf("|                                                   |\n");
-    printf("|                                                   |\n");
-    printf("|                HSTORICO DE RANKING                |\n");
-    printf("|                                                   |\n");
-    printf("|  JOGADORES     VITÓRIAS   EMPATES     DERROTAS    |\n");
-    printf("|                                                   |\n");
-    printf("|                                                   |\n");
-    printf("|  X - %s          %i         %i         %i         |\n", nome_x, vitoriasX, empatesX, derrotasX);
-    printf("|                                                   |\n");
-    printf("|                                                   |\n");
-    printf("|  O - %s          %i         %i         %i         |\n", nome_o, vitoriasO, empatesO, derrotasO);
-    printf("|                                                   |\n");
-    printf("|                                                   |\n");
-    printf("|                                                   |\n");
-    printf("|                                        0-VOLTAR   |\n");
+    printf("|                                                    \n");
+    printf("|                  JOGO DA VELHA!!                   \n");
+    printf("|                                                    \n");
+    printf("|                                                    \n");
+    printf("|                HSTORICO DE RANKING                 \n");
+    printf("|                                                    \n");
+    printf("|  JOGADORES     VITÓRIAS   EMPATES     DERROTAS     \n");
+    printf("|                                                    \n");
+    printf("|                                                    \n");
+    printf("|  X - %s          %i         %i         %i          \n", nome_x, vitoriasX, empatesX, derrotasX);
+    printf("|                                                    \n");
+    printf("|                                                    \n");
+    printf("|  O - %s           %i         %i         %i          \n", nome_o, vitoriasO, empatesO, derrotasO);
+    printf("|                                                    \n");
+    printf("|                                                    \n");
+    printf("|                                                    \n");
+    printf("|                                        0-VOLTAR    \n");
     printf("+---------------------------------------------------+\n");
 }
 
 void estrutura_jogo(char nome_o[50], char nome_x[50], char A1, char A2, char A3, char B1, char B2, char B3, char C1, char C2, char C3)
 {
     // base da estrutura do jogo
-    //system("cls");
+    system("cls");
     printf("+---------------------------------------------------+\n");
-    printf("|                                                   |\n");
-    printf("|                  JOGO DA VELHA!!                  |\n");
-    printf("|                                                   |\n");
-    printf("|  JOGADOR (X) %s                                   |\n", nome_x);
-    printf("|  JOGADOR (O) %s                                   |\n", nome_o);
-    printf("|                1         2        3               |\n");
-    printf("|                     |         |                   |\n");
-    printf("|          A       %c  |     %c   |   %c      A       |\n", A1, A2, A3);
-    printf("|               ______|_________|_______            |\n");
-    printf("|                     |         |                   |\n");
-    printf("|          B       %c  |     %c   |    %c      B      |\n", B1, B2, B3);
-    printf("|               ______|_________|_______            |\n");
-    printf("|                     |         |                   |\n");
-    printf("|          C       %c  |     %c   |    %c      C      |\n", C1, C2, C3);
-    printf("|                     |         |                   |\n");
-    printf("|                1         2         3              |\n");
-    printf("|                                                   |\n");
+    printf("|                                                    \n");
+    printf("|                  JOGO DA VELHA!!                   \n");
+    printf("|                                                    \n");
+    printf("|  JOGADOR (X) %s                                    \n", nome_x);
+    printf("|  JOGADOR (O) %s                                    \n", nome_o);
+    printf("|                1         2        3                \n");
+    printf("|                     |         |                    \n");
+    printf("|          A       %c  |     %c   |   %c      A      \n", A1, A2, A3);
+    printf("|               ______|_________|_______             \n");
+    printf("|                     |         |                    \n");
+    printf("|          B       %c  |     %c   |    %c      B     \n", B1, B2, B3);
+    printf("|               ______|_________|_______             \n");
+    printf("|                     |         |                    \n");
+    printf("|          C       %c  |     %c   |    %c      C     \n", C1, C2, C3);
+    printf("|                     |         |                    \n");
+    printf("|                1         2         3               \n");
+    printf("|                                                    \n");
     printf("+---------------------------------------------------+\n");
 }
 
@@ -170,23 +170,23 @@ void tela_vencedor(char vencedor)
     // criar tela do vencedor
     system("cls");
     printf("+---------------------------------------------------+\n");
-    printf("|                                                   |\n");
-    printf("|                  JOGO DA VELHA!!                  |\n");
-    printf("|                                                   |\n");
-    printf("|         UHUL VOCÊ VENCEU, PARABÉNS %c!!           |\n", vencedor);
-    printf("|                                                   |\n");
-    printf("|                  ______________                   |\n");
-    printf("|                 '._=_=_=_=_=_=.'                  |\n");
-    printf("|                 .-\\:        /-.                   |\n");
-    printf("|                | (|:.        |) |                 |\n");
-    printf("|                 '-|:.        |-'                  |\n");
-    printf("|                  \\::.        /                    |\n");
-    printf("|                   '::.      .'                    |\n");
-    printf("|                      )     (                      |\n");
-    printf("|                       '   '                       |\n");
-    printf("|                     _.     ._                     |\n");
-    printf("|                    '---------'                    |\n");
-    printf("|                                        0-VOLTAR   |\n");
+    printf("|                                                    \n");
+    printf("|                  JOGO DA VELHA!!                   \n");
+    printf("|                                                    \n");
+    printf("|         UHUL VOCÊ VENCEU, PARABÉNS %c!!            \n", vencedor);
+    printf("|                                                    \n");
+    printf("|                  ______________                    \n");
+    printf("|                 '._=_=_=_=_=_=.'                   \n");
+    printf("|                 .-\\:        /-.                   \n");
+    printf("|                | (|:.        |) |                  \n");
+    printf("|                 '-|:.        |-'                   \n");
+    printf("|                  \\::.        /                    \n");
+    printf("|                   '::.      .'                     \n");
+    printf("|                      )     (                       \n");
+    printf("|                       '   '                        \n");
+    printf("|                     _.     ._                      \n");
+    printf("|                    '---------'                     \n");
+    printf("|                                        0-VOLTAR    \n");
     printf("+---------------------------------------------------+\n");
 }
 
@@ -195,23 +195,23 @@ void tela_perdeu()
     // criar tela do perdedor
     system("cls");
     printf("+---------------------------------------------------+\n");
-    printf("|                                                   |\n");
-    printf("|                  JOGO DA VELHA!!                  |\n");
-    printf("|                                                   |\n");
-    printf("|         AH NÃO QUE PENA, TENTE EM UMA PRÓXIMA!!   |\n");
-    printf("|                                                   |\n");
-    printf("|       XXXXXXX                     XXXXXXX         |\n");
-    printf("|         XXXXXXX                 XXXXXXX           |\n");
-    printf("|           XXXXXXX             XXXXXXX             |\n");
-    printf("|             XXXXXXX         XXXXXXX               |\n");
-    printf("|               XXXXXXX     XXXXXXX                 |\n");
-    printf("|                   XXXXXXXXXXXXXX                  |\n");
-    printf("|                 XXXXXXXXXXXXXX                    |\n");
-    printf("|               XXXXXXX       XXXXXXX               |\n");
-    printf("|             XXXXXXX           XXXXXXX             |\n");
-    printf("|           XXXXXXX               XXXXXXX           |\n");
-    printf("|         XXXXXXX                   XXXXXXX         |\n");
-    printf("|                                        0-VOLTAR   |\n");
+    printf("|                                                    \n");
+    printf("|                  JOGO DA VELHA!!                   \n");
+    printf("|                                                    \n");
+    printf("| AH NÃO QUE PENA, FOI ATINGIDO O MÁXIMO DE 7 JOGADAS,\n");
+    printf("|               TENTE EM UMA PRÓXIMA JOGADA!!         \n");
+    printf("|       XXXXXXX                     XXXXXXX          \n");
+    printf("|         XXXXXXX                 XXXXXXX            \n");
+    printf("|           XXXXXXX             XXXXXXX              \n");
+    printf("|             XXXXXXX         XXXXXXX                \n");
+    printf("|               XXXXXXX     XXXXXXX                  \n");
+    printf("|                   XXXXXXXXXXXXXX                   \n");
+    printf("|                 XXXXXXXXXXXXXX                     \n");
+    printf("|               XXXXXXX       XXXXXXX                \n");
+    printf("|             XXXXXXX           XXXXXXX              \n");
+    printf("|           XXXXXXX               XXXXXXX            \n");
+    printf("|         XXXXXXX                   XXXXXXX          \n");
+    printf("|                                        0-VOLTAR    \n");
     printf("+---------------------------------------------------+\n");
 }
 
@@ -220,23 +220,23 @@ void tela_empate()
     // criar tela de empate
     system("cls");
     printf("+---------------------------------------------------+\n");
-    printf("|                                                   |\n");
-    printf("|                  JOGO DA VELHA!!                  |\n");
-    printf("|                                                   |\n");
-    printf("|         AH NÃO QUASE, TENTE EM UMA PRÓXIMA!!      |\n");
-    printf("|                                                   |\n");
-    printf("|                   ***********                     |\n");
-    printf("|                   ***********                     |\n");
-    printf("|                    *********                      |\n");
-    printf("|                     *******                       |\n");
-    printf("|                      *****                        |\n");
-    printf("|                       ***                         |\n");
-    printf("|                        *                          |\n");
-    printf("|                                                   |\n");
-    printf("|                      *****                        |\n");
-    printf("|                      *****                        |\n");
-    printf("|                                                   |\n");
-    printf("|                                        0-VOLTAR   |\n");
+    printf("|                                                    \n");
+    printf("|                  JOGO DA VELHA!!                   \n");
+    printf("|                                                    \n");
+    printf("|         AH NÃO QUASE, TENTE EM UMA PRÓXIMA!!       \n");
+    printf("|                                                    \n");
+    printf("|                   ***********                      \n");
+    printf("|                   ***********                      \n");
+    printf("|                    *********                       \n");
+    printf("|                     *******                        \n");
+    printf("|                      *****                         \n");
+    printf("|                       ***                          \n");
+    printf("|                        *                           \n");
+    printf("|                                                    \n");
+    printf("|                      *****                         \n");
+    printf("|                      *****                         \n");
+    printf("|                                                    \n");
+    printf("|                                        0-VOLTAR    \n");
     printf("+---------------------------------------------------+\n");
 }
 
@@ -354,22 +354,22 @@ char perguntar_jogador(char nome_o[50], char nome_x[50])
     {
         system("cls");
         printf("+---------------------------------------------------+\n");
-        printf("|                                                   |\n");
-        printf("|                  JOGO DA VELHA!!                  |\n");
-        printf("|                                                   |\n");
-        printf("|                                                   |\n");
-        printf("|             VOCÊ GOSTARIA DE CONTINUAR            |\n");
-        printf("|                  COM QUAL JOGADOR:                |\n");
-        printf("|                                                   |\n");
-        printf("|                                                   |\n");
-        printf("|               X - PARA O JOGADOR %s:              |\n", nome_x);
-        printf("|                                                   |\n");
-        printf("|               O - PARA O JOGADOR %s:              |\n", nome_o);
-        printf("|                                                   |\n");
-        printf("|                                                   |\n");
-        printf("|                                                   |\n");
-        printf("|                                                   |\n");
-        printf("|                                                   |\n");
+        printf("|                                                    \n");
+        printf("|                  JOGO DA VELHA!!                   \n");
+        printf("|                                                    \n");
+        printf("|                                                    \n");
+        printf("|             VOCÊ GOSTARIA DE CONTINUAR             \n");
+        printf("|                  COM QUAL JOGADOR:                 \n");
+        printf("|                                                    \n");
+        printf("|                                                    \n");
+        printf("|               X - PARA O JOGADOR %s:               \n", nome_x);
+        printf("|                                                    \n");
+        printf("|               O - PARA O JOGADOR %s:               \n", nome_o);
+        printf("|                                                    \n");
+        printf("|                                                    \n");
+        printf("|                                                    \n");
+        printf("|                                                    \n");
+        printf("|                                                    \n");
         printf("+---------------------------------------------------+\n");
 
         scanf("%c", &jogador);
@@ -437,7 +437,6 @@ int main()
     setlocale(LC_ALL, "Portuguese");
 
     char opcao_menu = '9';
-    srand(time(NULL)); // inicia jogadas aleatorias
     int vitoriasX = 0;
     int derrotasX = 0;
     int empatesX = 0;
@@ -677,15 +676,21 @@ int main()
             char *nomeX;
             char *nomeO;
 
-            if (jogadorComputador == 'X') {
+            if (jogadorComputador == 'X')
+            {
                 nomeX = "Computador";
-            } else {
+            }
+            else
+            {
                 nomeX = nome_x;
             }
 
-            if (jogadorComputador == 'O') {
+            if (jogadorComputador == 'O')
+            {
                 nomeO = "Computador";
-            } else {
+            }
+            else
+            {
                 nomeO = nome_o;
             }
 
@@ -694,7 +699,6 @@ int main()
             {
                 estrutura_jogo(nomeO, nomeX, A1, A2, A3, B1, B2, B3, C1, C2, C3);
                 printf("Escolha a posição que será jogada (Ex: A1): \n");
-
 
                 char entrada[2];
                 if (jogadorComputador == jogadorDaVez4)
@@ -833,6 +837,180 @@ int main()
         case '5':
             // terceiro jogo especial
             init();
+            A1 = ' ';
+            A2 = ' ';
+            A3 = ' ';
+            B1 = ' ';
+            B2 = ' ';
+            B3 = ' ';
+            C1 = ' ';
+            C2 = ' ';
+            C3 = ' ';
+
+            // jogador inicial
+            int contadorJogadas = 0;
+            char jogadorDaVez5 = 'X';
+            char parar5 = '?';
+            // posição de jogada
+            while (parar5 != '0')
+            {
+                estrutura_jogo(nome_o, nome_x, A1, A2, A3, B1, B2, B3, C1, C2, C3);
+                printf("Escolha a posição que será jogada (Ex: A1): \n");
+
+                char entrada[2];
+                scanf("%2s", &entrada);
+                contadorJogadas++;
+
+                if (entrada[0] == 'A' && entrada[1] == '1')
+                {
+                    A1 = jogadorDaVez5;
+                }
+                else if (entrada[0] == 'A' && entrada[1] == '2')
+                {
+                    A2 = jogadorDaVez5;
+                }
+                else if (entrada[0] == 'A' && entrada[1] == '3')
+                {
+                    A3 = jogadorDaVez5;
+                }
+                else if (entrada[0] == 'B' && entrada[1] == '1')
+                {
+                    B1 = jogadorDaVez5;
+                }
+                else if (entrada[0] == 'B' && entrada[1] == '2')
+                {
+                    B2 = jogadorDaVez5;
+                }
+                else if (entrada[0] == 'B' && entrada[1] == '3')
+                {
+                    B3 = jogadorDaVez5;
+                }
+                else if (entrada[0] == 'C' && entrada[1] == '1')
+                {
+                    C1 = jogadorDaVez5;
+                }
+                else if (entrada[0] == 'C' && entrada[1] == '2')
+                {
+                    C2 = jogadorDaVez5;
+                }
+                else if (entrada[0] == 'C' && entrada[1] == '3')
+                {
+                    C3 = jogadorDaVez5;
+                }
+                else
+                {
+                    printf("Opção inválida ou ocupada. Tente novamente:\n");
+                    continue;
+                }
+
+                // verificar o vencedor
+                int esta_completo = tabuleiro_completo(A1, A2, A3, B1, B2, B3, C1, C2, C3);
+                char vencedor = verificar_ganhador(A1, A2, A3, B1, B2, B3, C1, C2, C3);
+                if (vencedor == 'X')
+                {
+                    char sair = '?';
+                    while (sair != '0')
+                    {
+                        tela_vencedor(vencedor);
+                        printf("Para retornar a tela inicial é só digitar 0: \n");
+                        char escolha;
+                        scanf("%c", &escolha);
+                        switch (escolha)
+                        {
+                        case '0':
+                            printf("Sair");
+                            sair = '0';
+                            parar5 = '0';
+
+                        default:
+                            printf("Digitou errado!");
+                        }
+                    }
+                    vitoriasX = vitoriasX + 1;
+                    derrotasO = derrotasO + 1;
+                }
+                else if (vencedor == 'O')
+                {
+                    char sair = '?';
+                    while (sair != '0')
+                    {
+                        tela_vencedor(vencedor);
+                        printf("Para retornar a tela inicial é só digitar 0: \n");
+                        char escolha;
+                        scanf("%c", &escolha);
+                        switch (escolha)
+                        {
+                        case '0':
+                            printf("Sair");
+                            sair = '0';
+                            parar5 = '0';
+
+                        default:
+                            printf("Digitou errado!");
+                        }
+                    }
+                    vitoriasO = vitoriasO + 1;
+                    derrotasX = derrotasX + 1;
+                }
+                else if (vencedor == '?' && esta_completo == 1)
+                {
+                    // verificar empate
+                    char sair = '!';
+                    while (sair != '0')
+                    {
+                        tela_empate();
+                        printf("Para retornar a tela inicial é só digitar 0: \n");
+                        char escolha;
+                        scanf(" %c", &escolha);
+                        switch (escolha)
+                        {
+                        case '0':
+                            printf("Sair");
+                            sair = '0';
+                            parar5 = '0';
+                            break;
+                        default:
+                            printf("Digitou errado!");
+                            break;
+                        }
+                    }
+                    empatesO = empatesO + 1;
+                    empatesX = empatesX + 1;
+                }
+                else if (contadorJogadas == 7)
+                {
+                    char sair = '!';
+                    while (sair != '0')
+                    {
+                        tela_perdeu();
+                        printf("Para retornar a tela inicial é só digitar 0: \n");
+                        char escolha;
+                        scanf(" %c", &escolha);
+                        switch (escolha)
+                        {
+                        case '0':
+                            printf("Sair");
+                            sair = '0';
+                            parar5 = '0';
+                            break;
+                        default:
+                            printf("Digitou errado!");
+                            break;
+                        }
+                    }
+                    derrotasO = derrotasO + 1;
+                    derrotasX = derrotasX +1;
+                }
+                // trocando o jogador
+                if (jogadorDaVez5 == 'X')
+                {
+                    jogadorDaVez5 = 'O';
+                }
+                else
+                {
+                    jogadorDaVez5 = 'X';
+                }
+            }
             break;
         case '6':
             opcao_menu = '6';
@@ -840,7 +1018,6 @@ int main()
         default:
             printf("Opção inválida.\n");
         }
-        break;
     }
     return 0;
 }
