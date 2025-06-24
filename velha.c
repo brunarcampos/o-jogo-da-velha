@@ -251,10 +251,11 @@ void velhinha()
 
 void iniciar_tabuleiro()
 {
+    int i, j;
     // comando para iniciar o tabuleiro
-    for (int i = 0; i < 3; i++)
+    for (i = 0; i < 3; i++)
     {
-        for (int j = 0; j < 3; j++)
+        for (j = 0; j < 3; j++)
         {
             tabuleiro[i][j] = ' ';
         }
